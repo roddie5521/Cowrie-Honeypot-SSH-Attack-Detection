@@ -8,6 +8,8 @@ Cowrie Honeypot — SSH Attack Detection & Network Forensics
 
 🖥️ Lab Environment
 <img width="485" height="114" alt="image" src="https://github.com/user-attachments/assets/904ddcb2-8358-488f-858a-a42900752f7a" />
+
+
 Network: VirtualBox Host-Only Adapter — isolated lab environment.
 
 
@@ -65,17 +67,22 @@ tail -n 30 ~/cowrie/var/log/cowrie/cowrie.log
 Key Log Events
 <img width="661" height="444" alt="image" src="https://github.com/user-attachments/assets/280f0095-49e8-4d14-a7ff-f5adb6e1740d" />
 
+
 🔐 Indicators of Compromise (IoCs)
 <img width="587" height="336" alt="image" src="https://github.com/user-attachments/assets/97ce018c-663e-48dd-8dee-791f68922ab8" />
+
 
 📁 Evidence Collected
 <img width="609" height="189" alt="image" src="https://github.com/user-attachments/assets/c8ef82e2-04fb-4135-ad1a-9ba3a2db89aa" />
 
+
 🛡️ Mitigation & Recommendations
 <img width="766" height="223" alt="image" src="https://github.com/user-attachments/assets/a248b2a0-3554-4701-a237-21b929a5ceaf" />
 
+
 🧰 Tools Used
 <img width="594" height="263" alt="image" src="https://github.com/user-attachments/assets/b9dc6cd8-283f-47e1-b828-7f2d1f79f377" />
+
 
 📁 Repository Structure
 📦 cowrie-honeypot-ssh-detection/
