@@ -7,6 +7,8 @@ Cowrie Honeypot — SSH Attack Detection & Network Forensics
 
 <img width="880" height="275" alt="image" src="https://github.com/user-attachments/assets/76fd11fc-f8c6-4cc4-807b-72eed47f2d06" />
 
+
+
 🖥️ Lab Environment
 
 <img width="485" height="114" alt="image" src="https://github.com/user-attachments/assets/904ddcb2-8358-488f-858a-a42900752f7a" />
@@ -34,6 +36,7 @@ Key Cowrie configuration:
 Cowrie Honeypot Running
 
 
+
 🔍 Phase 2 — Reconnaissance (Nmap Scan)
 
 From the Kali attacker machine, a SYN scan was performed against the honeypot to confirm the SSH service was exposed.
@@ -46,11 +49,13 @@ MAC Address: 08:00:27:D6:2A:D6 (Oracle VirtualBox)
 Nmap confirmed port 2222 was open — the attacker now had a target.
 
 
+
 📡 Phase 3 — Live Traffic Capture (Wireshark)
 
 Wireshark was launched on the Kali machine to capture live traffic on eth0 before and during the attack. ICMP echo request/reply packets were visible — confirming active network communication between 192.168.56.102 and 192.168.56.103.
 
 The full capture was saved as cowrie_attack.pcap on the Kali desktop for forensic evidence.
+
 
 ⚡ Phase 4 — SSH Attack Simulation
 
@@ -64,6 +69,7 @@ What happened:
     º Attacker accepted the fingerprint and entered password
     º Cowrie logged in the attacker to a fake shell: root@svr04:~#
     º Session lasted 210.4 seconds before disconnecting
+
 
 📋 Phase 5 — Cowrie Log Analysis
 
@@ -95,6 +101,8 @@ Key Log Events
 <img width="594" height="263" alt="image" src="https://github.com/user-attachments/assets/b9dc6cd8-283f-47e1-b828-7f2d1f79f377" />
 
 
+
+
 📁 Repository Structure
 
 📦 cowrie-honeypot-ssh-detection/
@@ -103,6 +111,7 @@ Key Log Events
 ├── 📄 Incident_Report_Network_Attack_Detection.docx
 ├── 📦 06_cowrie_attack_pcap.pcap
 └── 📁 screenshots/
+
     ├── 01_Kali_Wireshark_Live_Capture.png
     ├── 02_Cowrie_Honeypot_Running.png
     ├── 03_Nmap_Scan_Port_2222.png
@@ -111,9 +120,11 @@ Key Log Events
     ├── cowrie_attack_pcap_file_saved_on_kali_desktop.png
     └── cowrie_attack_pcap_from_wireshark.png
 
+
 ⚠️ Disclaimer
 
 All activities were conducted in an isolated VirtualBox virtual lab. The Cowrie honeypot and attacker machine were personally controlled VMs. No real systems or third-party infrastructure were targeted. Strictly for educational purposes.
+
 
 👤 Skills Demonstrated
 
