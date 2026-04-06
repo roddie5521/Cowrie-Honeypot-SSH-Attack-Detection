@@ -18,9 +18,11 @@ Network: VirtualBox Host-Only Adapter — isolated lab environment.
 ⚙️ Phase 1 — Cowrie Honeypot Setup
 # Start Cowrie
 cowrie start
+
 # Verify running status
 cowrie status
 # → cowrie is running (PID: 1099)
+
 # Confirm port listening
 ss -tuln | grep 2222
 # → tcp LISTEN 0.0.0.0:2222
@@ -35,6 +37,7 @@ Cowrie Honeypot Running
 
 
 🔍 Phase 2 — Reconnaissance (Nmap Scan)
+
 From the Kali attacker machine, a SYN scan was performed against the honeypot to confirm the SSH service was exposed.
 nmap -sS -p 2222 192.168.56.103
 Results:
@@ -46,11 +49,13 @@ Nmap confirmed port 2222 was open — the attacker now had a target.
 
 
 📡 Phase 3 — Live Traffic Capture (Wireshark)
+
 Wireshark was launched on the Kali machine to capture live traffic on eth0 before and during the attack. ICMP echo request/reply packets were visible — confirming active network communication between 192.168.56.102 and 192.168.56.103.
 
 The full capture was saved as cowrie_attack.pcap on the Kali desktop for forensic evidence.
 
 ⚡ Phase 4 — SSH Attack Simulation
+
 The attacker connected to the honeypot using SSH on port 2222 with the root username, entering a password when prompted. Cowrie accepted the credentials and presented a simulated Debian GNU/Linux shell environment.
 ssh root@192.168.56.103 -p 2222
 
@@ -63,6 +68,7 @@ What happened:
     º Session lasted 210.4 seconds before disconnecting
 
 📋 Phase 5 — Cowrie Log Analysis
+
 After the attack, Cowrie logs were reviewed to extract full evidence of the attacker's session.
 tail -n 30 ~/cowrie/var/log/cowrie/cowrie.log
 
@@ -87,6 +93,7 @@ Key Log Events
 
 
 📁 Repository Structure
+
 📦 cowrie-honeypot-ssh-detection/
 ├── 📄 README.md
 ├── 📄 index.html
@@ -102,9 +109,11 @@ Key Log Events
     └── cowrie_attack_pcap_from_wireshark.png
 
 ⚠️ Disclaimer
+
 All activities were conducted in an isolated VirtualBox virtual lab. The Cowrie honeypot and attacker machine were personally controlled VMs. No real systems or third-party infrastructure were targeted. Strictly for educational purposes.
 
 👤 Skills Demonstrated
+
 º Cowrie SSH honeypot deployment and configuration
 º Live network traffic capture with Wireshark
 º Attack simulation — reconnaissance, SSH authentication, session analysis
