@@ -1,4 +1,4 @@
-# 🍯 Cowrie Honeypot — SSH Attack Detection & Network Forensics
+## 🍯 Cowrie Honeypot — SSH Attack Detection & Network Forensics
 
 > A hands-on defensive security lab deploying a Cowrie SSH honeypot to capture, log, and analyse a simulated SSH-based attack. Network traffic was captured live using Wireshark, attack behaviour was recorded in Cowrie logs, and a full incident report was produced — demonstrating real-world threat detection and forensic evidence collection.
 
@@ -27,8 +27,6 @@
 Network: VirtualBox Host-Only Adapter — isolated lab environment.
 
 ---
-
-## ⚙️ Phase 1 — Cowrie Honeypot Setup
 
 After successfully installing kali linux and cowrie honeypot on 2 different VMS, I fired it up.  
 Cowrie was deployed on a seperate Server Virtual Machine and configured to listen on TCP port 2222, emulating a real SSH service. I activate and startup Cowrie:
@@ -69,17 +67,16 @@ __Key Cowrie configurations__
 
 Confirmed Cowrie Honeypot Running
 
+---
+
 __🔍 Phase 2 — Reconnaissance (Nmap Scan)__
 
 From the Kali attacker machine(10.0.2.7), active scans were performed against the honeypot on 10.0.2.15 to confirm the SSH service was exposed.
 
-nmap -sn 10.0.2.124
-
-nmap -v 10.0.2.15
-
-nmap -sV 10.0.2.15
-
-nmap -sS -p 2222 10.0.2.15
+    nmap -sn 10.0.2.124
+    nmap -v 10.0.2.15
+    nmap -sV 10.0.2.15
+    nmap -sS -p 2222 10.0.2.15
 
 The purpose of the aboce is just to generate some traffic that will be captured by Wireshark for the sake of this lab trial.
 
@@ -94,6 +91,7 @@ MAC Address 0800278329C7 (Oracle VirtualBox virtual NIC)
 
 Nmap confirmed port 2222 was open — the attacker now had a target.
 
+---
 
 __🔍Phase 3 — Live Traffic Capture (Wireshark)__
 
@@ -106,6 +104,8 @@ The full capture was saved as 'day1 pcap capture.pcap' on the Kali desktop for f
 
 
 Wireshark Live Capture PCAP Saved on Desktop PCAP in Wireshark
+
+---
 
 __🔍Phase 4 — SSH Attack Simulation__
 
@@ -125,6 +125,8 @@ What happened:
     Session lasted 210.4 seconds before disconnecting
 
 SSH Attack Attempt
+
+---
 
 __🔍Phase 5 — Honeyport log of events__
 
@@ -148,7 +150,10 @@ This as we know is useful tactics for us to watch the attackers and figure out h
 
 Cowrie Log Evidence
 
+---
+
 __🔍🔐 Indicators of Compromise (IoCs)__
+
 
 Indicator | Value |
 |-------------- | ---------  |
@@ -161,8 +166,7 @@ Auth Method:	 | Password
 Session Duration: | 210.4 seconds
 Key Fingerprint: | 	SHA256j2MuUP3q5OwjnqEiDWsEOzuffC13yW4ulkkUOcAwM8
 
-
-
+---
 
 __🔍📁 Evidence Collected__
 
@@ -173,6 +177,8 @@ cowrie.log  | 	Cowrie session log — full authentication and shell activity
 Nmap scan output  | 	Confirms port 2222 exposed pre-attack
 Screenshots 	 | Visual evidence of each attack phase
 
+---
+
 __🔍️ Mitigation & Recommendations__
 Finding  |	Recommendation  |
 |-------------- | ---------  |
@@ -181,6 +187,8 @@ Password authentication accepted |	Enforce key-based SSH authentication only
 SSH exposed on non-standard port |	Apply firewall rules to restrict management port access by IP
 No active intrusion detection |	Deploy IDSIPS alongside honeypots for real-time alerting
 Long session undetected |  Monitor authentication logs continuously — alert on root logins
+
+---
 
 __🧰 Tools Used__  
 
@@ -192,6 +200,8 @@ Nmap:  | 	Port scanning and service reconnaissance
 Kali Linux(.7):  | 	Attacker machine
 Kali Purple(.15):  | 	Honeypot host
 VirtualBox : | 	Lab virtualisation and network isolation  
+
+---
 
 __📁 Repository Structure__
 
@@ -218,9 +228,13 @@ __📦 cowrie-honeypot-ssh-detection__
     Cowrie_attack_pcap_file_saved_on_kali_desktop.png  
     Cowrie_attack_pcap_from_wireshark.png  
 
+---
+
 __⚠️ Disclaimer__
 
     All activities were conducted in an isolated VirtualBox virtual lab. The Cowrie honeypot and attacker machine were personally controlled VMs. No real systems or third-party infrastructure were targeted. Strictly for educational purposes.
+
+---
 
 __👤 Skills Demonstrated__
 
@@ -231,4 +245,11 @@ __👤 Skills Demonstrated__
     PCAP evidence collection and documentation
     Incident report writing
 
+---
+
+__Final Thoughts__
+
+Setting up Cowrie was such a great first project. It forced me to think like an attacker while building skills in Linux, networking, and scripting.  
+If you’re new to cybersecurity and wondering what to work on I highly recommend this.  
+Thanks for taking your time to go through this lab experience and if you’re setting up your own honeypot, I’d love to hear how it goes!
 
